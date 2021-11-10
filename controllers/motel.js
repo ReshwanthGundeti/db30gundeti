@@ -22,7 +22,21 @@ exports.motel_detail = function(req, res) {
 // Handle motel create on POST. 
 exports.motel_create_post = function(req, res) { 
     res.send('NOT IMPLEMENTED: motel create POST'); 
+
 }; 
+
+// VIEWS 
+// Handle a show all view 
+exports.motel_view_all_Page = async function(req, res) { 
+    try{ 
+        themotels = await motel.find(); 
+        res.render('motels', { title: 'motel Search Results', results: themotels }); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+};
  
 // Handle motel delete form on DELETE. 
 exports.motel_delete = function(req, res) { 
