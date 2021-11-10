@@ -29,8 +29,8 @@ exports.motel_create_post = async function(req, res) {
     // and require that it be a json object 
     // {"motel_type":"goat", "cost":12, "size":"large"} 
     document.motel_type = req.body.motel_type; 
-    document.cost = req.body.cost; 
-    document.size = req.body.size; 
+    document.Cost = req.body.Cost; 
+    document.Duration = req.body.Duration; 
     try{ 
         let result = await document.save(); 
         res.send(result); 
