@@ -44,9 +44,9 @@ db.once("omotel", function(){
 async function recreateDB(){ 
   // Delete everything 
   await motel.deleteMany(); 
-  let instance1 = new motel({motel_type:"Bar and Resturant", Duration:2,cost:20});
-  let instance2 = new motel({motel_type:"Club", Duration:3,cost:100});
-  let instance3 = new motel({motel_type:"Resort", Duration: 3,cost:250});
+  let instance1 = new motel({motel_type:"Bar and Resturant", Duration:2,Cost:20});
+  let instance2 = new motel({motel_type:"Club", Duration:3,Cost:100});
+  let instance3 = new motel({motel_type:"Resort", Duration: 3,Cost:250});
   instance1.save( function(err,doc) {
   if(err) return console.error(err);
   console.log("First object saved")

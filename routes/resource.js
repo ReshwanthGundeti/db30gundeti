@@ -8,13 +8,13 @@ var motel_controller = require('../controllers/motel');
 router.get('/', api_controller.api);
 /// motel ROUTES ///
 // POST request for creating a motel.
-router.post('/motels', motel_controller.motel_create_post);
+router.post('/motel', motel_controller.motel_create_post);
 // DELETE request to delete motel.
-router.delete('/motels/:id', motel_controller.motel_delete);
+router.delete('/motel/:id', motel_controller.motel_delete);
 // PUT request to update motel.
-router.put('/motels/:id', motel_controller.motel_update_put);
+router.put('/motel/:id', motel_controller.motel_update_put);
 // GET request for one motel.
-router.get('/motels/:id', motel_controller.motel_detail);
+router.get('/motel/:id', motel_controller.motel_detail);
 // GET request for list of all motel items.
-router.get('/motels', motel_controller.motel_list);
+router.get('/motel', motel_controller.motel_list);
 module.exports = router;

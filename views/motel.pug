@@ -2,14 +2,12 @@ extends layout
 
 block content
   h1= title
-  - const motel  = ['motel_type','Duration','Cost']
-  - let results;
+  - let motel = results;
   script.
     function buy(x){
       alert('Purchased Item: ' + x)
    } 
   div(class='container-fluid')
     div(class='row')
-    let motel = results 
-      each results, index in motel 
-        div(class='col-sm-2' onclick='buy('+index+')') #{results} 
+      each m, index in motel 
+       div(class="col-sm-2" onclick=`buy(${index})`) #{m.motel_type} #{m.Duration} #{m.Cost} 
