@@ -1,9 +1,18 @@
 var motel = require('../models/motel'); 
  
 // List of all motels 
-exports.motel_list = function(req, res) { 
-    res.send('NOT IMPLEMENTED: motel list'); 
+
+exports.motel_list = async function(req, res) { 
+    try{ 
+        themotels = await motel.find(); 
+        res.send(themotels); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
 }; 
+
  
 // for a specific motel. 
 exports.motel_detail = function(req, res) { 
