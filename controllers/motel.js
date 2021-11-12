@@ -13,10 +13,17 @@ exports.motel_list = async function(req, res) {
     }   
 }; 
 
- 
 // for a specific motel. 
-exports.motel_detail = function(req, res) { 
-    res.send('NOT IMPLEMENTED: motel detail: ' + req.params.id); 
+
+exports.motel_detail = async function(req, res) { 
+    console.log("detail"  + req.params.id) 
+    try { 
+        result = await motel.findById( req.params.id) 
+        res.send(result) 
+    } catch (error) { 
+        res.status(500) 
+        res.send(`{"error": document for id ${req.params.id} not found`); 
+    } 
 }; 
  
 // Handle motel create on POST. 
@@ -40,6 +47,10 @@ exports.motel_create_post = async function(req, res) {
         res.send(`{"error": ${err}}`); 
     }   
 }; 
+
+
+ 
+
 // VIEWS 
 // Handle a show all view 
 exports.motel_view_all_Page = async function(req, res) { 
