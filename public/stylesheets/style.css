@@ -1,8 +1,17 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 0px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
 }
+.motelAttr { 
+  background-color: aquamarine; 
+  width: 150px; 
+  text-align:left;
+  padding: 8px;
+  margin: 5px;
+  flex-wrap: nowrap;
+} 
+

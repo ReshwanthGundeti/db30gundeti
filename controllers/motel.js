@@ -99,16 +99,18 @@ failed`);
     } 
 };  
 
-// Handle a show one view with id specified by query 
-exports.motel_view_one_Page = async function(req, res) { 
-    console.log("single view for id "  + req.query.id) 
-    try{ 
-        result = await motel.findById( req.query.id) 
-        res.render('moteldetail',  
-{ title: 'motel Detail', toShow: result }); 
-    } 
-    catch(err){ 
-        res.status(500) 
-        res.send(`{'error': '${err}'}`); 
-    } 
+// Handle a show one view with id specified by query
+exports.motel_view_one_Page = async function(req, res) {
+    console.log("single view for id "  + req.query.id)
+    try{
+        result = await motel.findById( req.query.id)
+        res.render('moteldetail', {
+            title: 'motel Detail', 
+            toShow: result
+        });
+    }
+    catch(err){
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
 }; 

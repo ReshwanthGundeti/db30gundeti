@@ -1,22 +1,22 @@
-extends layout 
- 
-block content 
-   h1= title 
- 
-  - let motelid = toShow._id 
-  - let motel_type = toShow.motel_type 
-  - let motelCost = toShow.Cost 
-  - let motelDuration  = toShow.Duration 
-  div 
-    div.row 
-      div(class='motelAttr mr-3') motel ID is: 
-      div #{motelid} 
-    div.row 
-      div(class='motelAttr mr-3') motel Type is: 
-      div #{motel_type} 
-    div.row 
-      div(class='motelAttr mr-3') motel Size is: 
-      div #{motelDuration} 
-    div.row 
-      div(class='motelAttr mr-3') motel Cost is: 
-      div #{motelCost} 
+extends layout
+
+block content
+  h6(class="Title")= title
+  
+    - let motelid = toShow._id   
+    - let motel_type = toShow.motel_type
+    - let Duration = toShow.Duration
+    - let Cost = toShow.Cost
+    div
+      div.row
+        div(class='motelAttr mr-3') motel ID is:
+        div #{motelid}
+      div.row
+        div(class='motelAttr mr-3') motelType is:
+        div #{motel_type}
+      div.row
+        div(class='motelAttr mr-3') motel Duration is:
+        div #{Duration}
+      div.row
+        div(class='motelAttr mr-3') motel Cost is:
+        div #{Cost}
