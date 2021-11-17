@@ -6,7 +6,11 @@ var router = express.Router();
 router.get('/', motel_controlers.motel_view_all_Page);
 
 /* GET detail motel page */ 
-router.get('/detail', motel_controlers.motel_view_one_Page); 
+//  router.get('/detail', motel_controlers.motel_view_one_Page); 
+ /* GET create motel page */ 
+// router.get('/create', motel_controlers.motel_create_Page);
+
+
 
 
 module.exports = router;

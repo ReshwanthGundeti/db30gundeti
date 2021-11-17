@@ -1,8 +1,7 @@
 extends layout
 
 block content
-  h6(class="Title")= title
-  
+  h1 = title
     - let motelid = toShow._id   
     - let motel_type = toShow.motel_type
     - let Duration = toShow.Duration
@@ -12,7 +11,7 @@ block content
         div(class='motelAttr mr-3') motel ID is:
         div #{motelid}
       div.row
-        div(class='motelAttr mr-3') motelType is:
+        div(class='motelAttr mr-3') motel motelType is:
         div #{motel_type}
       div.row
         div(class='motelAttr mr-3') motel Duration is:

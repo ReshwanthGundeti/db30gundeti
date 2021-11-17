@@ -55,7 +55,8 @@ exports.motel_create_post = async function(req, res) {
 // Handle a show all view 
 exports.motel_view_all_Page = async function(req, res) { 
     try{ 
-        themotel = await motel.find(); 
+        let themotel = await motel.find(); 
+        console.log(themotel);
         res.render('motel', { title: 'motel Search Results', results: themotel }); 
     } 
     catch(err){ 
@@ -98,7 +99,6 @@ ${JSON.stringify(req.body)}`)
 failed`); 
     } 
 };  
-
 // Handle a show one view with id specified by query
 exports.motel_view_one_Page = async function(req, res) {
     console.log("single view for id "  + req.query.id)
@@ -113,4 +113,18 @@ exports.motel_view_one_Page = async function(req, res) {
         res.status(500)
         res.send(`{'error': '${err}'}`);
     }
-}; 
+};
+// Handle building the view for creating a motel.
+// No body, no in path parameter, no query.
+// Does not need to be async
+exports.motel_create_Page =  function(req, res) {
+    console.log("create view")
+    try{
+        res.render('motelcreate', { title: 'motel Create'});
+    }
+    catch(err){
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+}
+
