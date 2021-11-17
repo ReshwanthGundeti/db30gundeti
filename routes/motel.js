@@ -13,4 +13,7 @@ router.get('/create', motel_controlers.motel_create_Page);
 /* GET create update page */ 
 router.get('/update', motel_controlers.motel_update_Page); 
 
+/* GET create motel page */ 
+router.get('/delete', motel_controlers.motel_delete_Page); 
+
 module.exports = router;
