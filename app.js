@@ -3,14 +3,14 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var motel = require("./models/motel"); 
 
-const connectionString =  process.env.MONGO_CON 
+const connectionString =  
+process.env.MONGO_CON 
 mongoose = require('mongoose'); 
 mongoose.connect(connectionString,  
 {useNewUrlParser: true, 
 useUnifiedTopology: true}); 
-
-
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -31,22 +31,21 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
 //Get the default connection 
 var db = mongoose.connection; 
  
 //Bind connection to error event  
 db.on('error', console.error.bind(console, 'MongoDB connection error:')); 
-db.once("omotel", function(){ 
+db.once("open", function(){ 
  console.log("Connection to DB succeeded")}); 
- var motel = require("./models/motel")
+
  // We can seed the collection if needed on server start 
 async function recreateDB(){ 
   // Delete everything 
   await motel.deleteMany(); 
-  let instance1 = new motel({motel_type:"Bar and Resturant", Duration:2,Cost:20});
-  let instance2 = new motel({motel_type:"Club", Duration:3,Cost:100});
-  let instance3 = new motel({motel_type:"Resort", Duration: 3,Cost:250});
+  let instance1 = new motel({motel_type:"Bar and Resturant",Duration:2,Cost:20});
+  let instance2 = new motel({motel_type:"Resort", Duration:3,Cost:100});
+  let instance3 = new motel({motel_type:"Club", Duration: 4,Cost:250});
   instance1.save( function(err,doc) {
   if(err) return console.error(err);
   console.log("First object saved")
@@ -62,13 +61,7 @@ async function recreateDB(){
   } 
  
 let reseed = true; 
-if (reseed) { recreateDB();} 
-
-
- 
- 
-
-
+if (reseed) { recreateDB();}
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

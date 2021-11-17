@@ -1,9 +1,9 @@
-extends layout
+
 
 block content
   h1= title
 
-  form(id='motelForm', action="/resource/motels", method="POST")
+  form(id='motelForm', action="/resource/motel", method="POST")
     div.form-group
         label.motelAttr(for='motel_type') motel type
         input#motel_type(type='text', name='motel_type')

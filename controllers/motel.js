@@ -13,8 +13,8 @@ exports.motel_list = async function(req, res) {
     }   
 }; 
 
+ 
 // for a specific motel. 
-
 exports.motel_detail = async function(req, res) { 
     console.log("detail"  + req.params.id) 
     try { 
@@ -24,7 +24,7 @@ exports.motel_detail = async function(req, res) {
         res.status(500) 
         res.send(`{"error": document for id ${req.params.id} not found`); 
     } 
-}; 
+};  
  
 // Handle motel create on POST. 
 // Handle motel create on POST. 
@@ -47,16 +47,11 @@ exports.motel_create_post = async function(req, res) {
         res.send(`{"error": ${err}}`); 
     }   
 }; 
-
-
- 
-
 // VIEWS 
 // Handle a show all view 
 exports.motel_view_all_Page = async function(req, res) { 
     try{ 
-        let themotel = await motel.find(); 
-        console.log(themotel);
+        themotel = await motel.find(); 
         res.render('motel', { title: 'motel Search Results', results: themotel }); 
     } 
     catch(err){ 
@@ -76,10 +71,9 @@ exports.motel_delete = async function(req, res) {
         res.status(500) 
         res.send(`{"error": Error deleting ${err}}`); 
     } 
-};  
+};
  
 // Handle motel update form on PUT. 
- 
 exports.motel_update_put = async function(req, res) { 
     console.log(`update on id ${req.params.id} with body 
 ${JSON.stringify(req.body)}`) 
@@ -98,7 +92,8 @@ ${JSON.stringify(req.body)}`)
         res.send(`{"error": ${err}: Update for id ${req.params.id} 
 failed`); 
     } 
-};  
+}; 
+
 // Handle a show one view with id specified by query
 exports.motel_view_one_Page = async function(req, res) {
     console.log("single view for id "  + req.query.id)
@@ -114,6 +109,7 @@ exports.motel_view_one_Page = async function(req, res) {
         res.send(`{'error': '${err}'}`);
     }
 };
+
 // Handle building the view for creating a motel.
 // No body, no in path parameter, no query.
 // Does not need to be async
@@ -126,5 +122,19 @@ exports.motel_create_Page =  function(req, res) {
         res.status(500)
         res.send(`{'error': '${err}'}`);
     }
-}
+};
 
+// Handle building the view for updating a motel. 
+// query provides the id 
+exports.motel_update_Page =  async function(req, res) { 
+    console.log("update view for item "+req.query.id) 
+    try{ 
+        let result = await motel.findById(req.query.id) 
+        res.render('motelupdate', { title: 'motel Update', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+ 

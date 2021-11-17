@@ -1,8 +1,13 @@
-extends layout 
+
+
 block content
-	h1= title
-	- let motel = results;
-		div(class='container-fluid')
-			div(class='row')
-				each m, index in motel 
-					div(class="col-sm-2")  #{m.motel_type}  #{m.Duration}  #{m.Cost}              
+  h1= title
+  - let motel = results;
+  script.
+    function buy(x){
+      alert('Purchased Item: ' + x)
+   } 
+  div(class='container-fluid')
+    div(class='row')
+      each m, index in motel 
+       div(class="col-sm-2" onclick=`buy(${index})`) #{m.motel_type} #{m.Duration} #{m.Cost}
