@@ -1,9 +1,9 @@
-
- 
-block content 
-  h1= title 
- 
-  - let motelid = toShow._id 
+block content
+    h1= title
+   if (toShow == null)
+    h2 No instance to Update
+   else
+ - let motelid = toShow._id 
   - let motel_type = toShow.motel_type 
   - let Cost  = toShow.Cost 
   - let Duration  = toShow.Duration 
