@@ -1,45 +1,46 @@
 extends layout
 
 block content
-    h1= title
+  h1= title
    if (toShow == null)
     h2 No instance to Update
    else
- - let motelid = toShow._id 
-  - let motel_type = toShow.motel_type 
-  - let Cost  = toShow.Cost 
-  - let Duration  = toShow.Duration 
-   
-  div.row(class='mb-2') 
-    div.mr-1 ID is 
-    div #{motelid} 
-  - let actionid = "/resource/motel/" + motelid 
-  form(id='motelForm', action= actionid, method="PUT") 
-    div.form-group 
-        label.motelAttr(for='motel_type') motel type 
-        input#motel_type(type='text', name='motel_type', value= motel_type ) 
-    div.form-group 
-        label.motelAttr(for='Cost') motel Cost 
-        input#Cost(type='number', name='Cost', value= Cost) 
-    div.form-group 
-        label.motelAttr(for='Duration') motel Duration 
-        input#cost(type='number', name='Duration', value= Duration) 
-    input(type="submit") 
- 
-  script. 
-    document.forms['motelForm'].addEventListener('submit', (event) => { 
-      event.preventDefault(); 
-      // TODO do something here to show user that form is being submitted 
-      fetch(event.target.action, { 
-        method: 'PUT', 
-        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
-      }).then((resp) => { 
-        return resp.json(); // or resp.text() or whatever the server sends 
-      }).then((body) => { 
-        alert("Update succeded") 
-        // TODO handle body 
-      }).catch((error) => { 
-        // TODO handle error 
-        alert("Update failed " + error ) 
-      }); 
-    }); 
+
+    - let motelid = toShow._id
+    - let motel_type = toShow.motel_type
+    - let Duration = toShow.Duration 
+    - let Cost = toShow.Cost 
+  
+    div.row(class='mb-2')
+        div.mr-1 ID is
+        div #{motelid}
+    - let actionid = "/resource/motel/" + motelid
+    form(id='motelForm', action= actionid, method="PUT")
+        div.form-group
+            label.motelAttr(for='moteltype') motel type
+            input#moteltype(type='text', name='motel_type', value= motel_type )
+        div.form-group
+            label.motelAttr(for='Duration') motel Duration 
+            input#color(type='number', name='Duration', value= Duration )
+        div.form-group
+            label.motelAttr(for='Cost') motel Cost 
+            input#price(type='number', name='Cost', value= Cost )
+        input(type="submit")
+
+  script.
+    document.forms['motelForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      // TODO do something here to show user that form is being submitted
+      fetch(event.target.action, {
+        method: 'PUT',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Update succeded")
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Update failed " + error )
+      });
+    });
