@@ -19,12 +19,12 @@ const secured = (req, res, next) => {
     res.redirect("/login");
     }
  /* GET create motel page */ 
-router.get('/create', motel_controlers.motel_create_Page);
+router.get('/create',secured, motel_controlers.motel_create_Page);
 
 /* GET create update page */ 
 router.get('/update',secured, motel_controlers.motel_update_Page); 
 
 /* GET create motel page */ 
-router.get('/delete', motel_controlers.motel_delete_Page); 
+router.get('/delete',secured, motel_controlers.motel_delete_Page); 
 
 module.exports = router;
